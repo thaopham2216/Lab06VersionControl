@@ -27,8 +27,27 @@ def encoder(password_input):
     return encoded_password
 
 
-def decoder(encoded):
-    pass
+def decoder(encode):
+    # Creates an empty decoded password string.
+    decoded_password = ''
+    for char in encode:
+        # Converts character to an integer.
+        char = int(char)
+        # Shifts integer back by three.
+        char -= 3
+        # Accounts for circumstances when decoding produces a negative number.
+        if char == -1:
+            char = 9
+        elif char == -2:
+            char = 8
+        elif char == -3:
+            char = 7
+        # Converts the character back into a string
+        char = str(char)
+        # Adds each character to decoded password.
+        decoded_password += char
+    return decoded_password
+
 
 
 if __name__ == '__main__':
@@ -43,12 +62,12 @@ if __name__ == '__main__':
         option_input = int(input('Please enter an option: '))
         if option_input == 3:
             break
-        password_input = input('Please enter your password to encode: ')
 
         # if loop for option_input
         encode = ''
         original_password = ''
         if option_input == 1:
+            password_input = input('Please enter your password to encode: ')
             encode = encoder(password_input)
             print('Your password has been encoded and stored')
         elif option_input == 2:
