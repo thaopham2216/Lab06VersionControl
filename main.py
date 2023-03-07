@@ -9,6 +9,7 @@ Menu
 
     ''')
 
+
 def encoder(password_input):
     encoded_password = ''
     new_i = ''
@@ -22,38 +23,38 @@ def encoder(password_input):
         elif int(i) == 9:
             new_i = 2
         encoded_password += str(new_i)
-    print(encoded_password)
+    # print(encoded_password)
     return encoded_password
 
 
-# def decoder(encoded):
-#     original_password = ''
-#     new_element = ''
-#     for element in encoded:
-#
-#     return original_password
+def decoder(encoded):
+    pass
 
 
-if __name__ == "__main__":
-    menu()
-    stop_option = 0
+if __name__ == '__main__':
 
-    # get user input
-    option_input = int(input("Please enter an option: "))
-    password_input = input('Please enter your password to encode: ')
-
-    while stop_option != 3:
-        if option_input == 1:
-            encoded = encoder(password_input)
-            print("Your password has been encoded and stored!")
-        elif option_input == 2:
-            encoded = encoder(password_input)
-            # original_pass = decoder(encoded)
-            print(f'The encoded password is {encoded}, and the original password is original_pass')
-        else:
-            stop_option = 3
-
+    # Loop to run options
+    stop = 0
+    while stop != 3:
+        # print menu
         menu()
 
-        option_input = int(input("Please enter an option: "))
-        stop_option = option_input
+        # get input
+        option_input = int(input('Please enter an option: '))
+        if option_input == 3:
+            break
+        password_input = input('Please enter your password to encode: ')
+
+        # if loop for option_input
+        encode = ''
+        original_password = ''
+        if option_input == 1:
+            encode = encoder(password_input)
+            print('Your password has been encoded and stored')
+        elif option_input == 2:
+            encode = encoder(password_input)
+            original_password = decoder(encode)
+            print(f"The encoded password is {encode}, and the original password is {original_password}.")
+        else:
+            stop = option_input
+
